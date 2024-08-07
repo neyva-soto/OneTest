@@ -39,4 +39,26 @@ class LoginPage(BasePage):
         loop = self.context.async_context.loop
         return loop.run_until_complete(self.context.page.query_selector(f'input[name="{input_name}"]'))
 
+    def verifyUserInputRequired(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.WARNIG_USER_INPUT))
 
+    def verifyPasswordInputRequired(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.WARNIG_PASSWORD_INPUT))
+
+    def verifydisplayButton(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.LOGIN_BUTTON))
+
+    def verifydisplaywarnin(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.INVALID_CREDENTIAL))
+
+    def verifyForgotPassword(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.FORGOT_PASSWORD))
+
+    def verifyFormForgotPassword(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.FORM_FORGOT))
