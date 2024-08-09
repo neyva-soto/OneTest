@@ -8,7 +8,7 @@ Feature: Login - Successfully login
   Acceptance criteria:
   * Login button should work and enter we page
 
-  Scenario Outline: Campos successfully
+  Scenario Outline: OT-IS01 Verificar la existencia de los campos usuario y contraseña
 
     Given The user is on the login page
     Then I see input field in the page with id "<UserId>"
@@ -19,13 +19,12 @@ Feature: Login - Successfully login
       | username  |  password   |
 
 
-     #verificar que existe el boton de login
-  Scenario: Login successfully
+  Scenario: OT-IS02 Verificar la existencia del boton de inicio de sesión
     When The user is on the login page
     Then button will be displayed
 
 
-  Scenario Outline: Login successfully
+  Scenario Outline: OT-IS03 Verificar la Funcionalidad del Botón de Inicio de Sesión con Datos Válidos
     Given The user is on the login page
     When the user enters the value "<User>" in the text-input for username
     And the user enters the value "<Password>" in the text-input for password
@@ -37,38 +36,8 @@ Feature: Login - Successfully login
       | Admin   | admin123   | Dashboard |
 
 
-    #verificar el inicio de sesion con datos vacios
-  Scenario: Login successfully
-    Given The user is on the login page
-    When the user clicks login button
-    Then User and password fields should be displayed are required
 
-
- #inicio de sesion con login vacio
-  Scenario Outline: Login successfully
-    Given The user is on the login page
-    When the user enters the value "<Password>" in the text-input for password
-    And the user clicks login button
-    Then Then it will be shown that the username field is required
-
-    Examples:
-      | Password   | Text      |
-      | admin123   | Dashboard |
-
- #inicio de sesion con password vacio
-  Scenario Outline: Password sucessfully
-    Given The user is on the login page
-    When the user enters the value "<User>" in the text-input for username
-    And the user clicks login button
-    Then Then it will be shown that the password field is required
-
-    Examples:
-      | User  | Text      |
-      | admin | Dashboard |
-
-
-    #inicio de sesion con datos erroneos
-  Scenario Outline: Login successfully
+  Scenario Outline: OT-IS04 Verificar la Funcionalidad del Botón de Inicio de Sesión con Datos incorrectos
     Given The user is on the login page
     When the user enters the value "<User>" in the text-input for username
     And the user enters the value "<Password>" in the text-input for password
@@ -79,8 +48,38 @@ Feature: Login - Successfully login
       | User  | Password | mensaje   |
       | super | super123 | Dashboard |
 
-          #inicio de sesion con username erroneo
-  Scenario Outline: Login successfully
+
+  Scenario: OT-IS05 Verificar el comportamiento de inicio de sesión cuando los campos usuario y contraseña son vacíos
+    Given The user is on the login page
+    When the user clicks login button
+    Then User and password fields should be displayed are required
+
+
+
+  Scenario Outline: OT-IS06 Verificar el mensaje de error cuando el campo user name esta vacio
+    Given The user is on the login page
+    When the user enters the value "<Password>" in the text-input for password
+    And the user clicks login button
+    Then Then it will be shown that the username field is required
+
+    Examples:
+      | Password   | Text      |
+      | admin123   | Dashboard |
+
+
+  Scenario Outline: OT-IS07 Verificar el mensaje de error cuando el campo password esta vacio
+    Given The user is on the login page
+    When the user enters the value "<User>" in the text-input for username
+    And the user clicks login button
+    Then Then it will be shown that the password field is required
+
+    Examples:
+      | User  | Text      |
+      | admin | Dashboard |
+
+
+
+  Scenario Outline: OT-IS08 Verificar el comportamiento de inicio de sesion cuando se introducen usuario incorrecto
     Given The user is on the login page
     When the user enters the value "<User>" in the text-input for username
     And the user enters the value "<Password>" in the text-input for password
@@ -92,8 +91,7 @@ Feature: Login - Successfully login
       | super | admin123 | Dashboard |
 
 
-            #inicio de sesion con password erroneo
-  Scenario Outline: Login successfully
+  Scenario Outline: OT-IS09 Verificar el comportamiento de inicio de sesion cuando se introduce contraseña incorrecta
     Given The user is on the login page
     When the user enters the value "<User>" in the text-input for username
     And the user enters the value "<Password>" in the text-input for password
@@ -105,16 +103,38 @@ Feature: Login - Successfully login
       | Admin | super123 | Dashboard |
 
 
+   Scenario Outline: Outline: OT-IS10 Verificar que el campo contraseña muestre puntos por cada letra ingresada
+    Given The user is on the login page
+    When the user enters the value "<Password>" in the text-input for password
+    Then the password field must be hidden
 
-       #verificar el enlace de olvidaste la contraseña
-  Scenario : Forgot password
+  Examples:
+
+    | Password | Text      |
+    | admin123 | Dashboard |
+
+
+  Scenario: OT-IS11 Verificar el Comportamiento del Enlace de Recuperación de Contraseña
     Given The user is on the login page
     When the user clicks in forgotPassword
     Then the new password form will show up
 
 
-    #Verificar el Formato de Credenciales Permitido
-  Scenario Outline: Login successfully
+  Scenario Outline: OT-IS12 Verifica que los campos de username y password se limpien despues de un intento fallido
+    Given The user is on the login page
+    When the user enters the value "<User>" in the text-input for username
+    And the user enters the value "<Password>" in the text-input for password
+    And the user clicks login button
+    Then will display text-input for username empty
+    And will display text-input for password empty
+
+    Examples:
+
+      | User | Password |
+      |super |super     |
+
+
+  Scenario Outline: OT-IS13 Verificar la sensibilidad de mayúsculas para login en inicio de sesión
     Given The user is on the login page
     When the user enters the value "<User>" in the text-input for username
     And the user enters the value "<Password>" in the text-input for password
@@ -124,3 +144,11 @@ Feature: Login - Successfully login
     Examples:
       | User  | Password | Text      |
       | ADMIN | admin123 | Dashboard |
+
+
+  Scenario: OT-IS14 Verificar la funcionalidad del enlace OrangeHRM, Inc.
+    Given The user is on the login page
+    When the user clicks in linkOrange
+    Then the will see new page linkOrange
+
+

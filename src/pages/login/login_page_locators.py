@@ -9,4 +9,7 @@ class LoginPageLocators:
     INVALID_CREDENTIAL = ".oxd-alert-content-text"
     PASSWORD_INPUT_SECRET = ".oxd-input oxd-input--active"
     FORGOT_PASSWORD = ".oxd-text oxd-text--p orangehrm-login-forgot-header"
-    FORM_FORGOT = "oxd-text oxd-text--h6 orangehrm-forgot-password-title"
+    FORM_FORGOT = ".oxd-text oxd-text--h6 orangehrm-forgot-password-title"
+    FIELD_PASSWORD = "//input[@type='password']"
+    LINK_ORANGE = "//a[@href='http://www.orangehrm.com']"
+    PAGE_ORANGE = "//h1[text()='Peace of mind is just a few clicks away!']"

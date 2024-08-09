@@ -62,3 +62,25 @@ class LoginPage(BasePage):
     def verifyFormForgotPassword(self):
         loop = self.context.async_context.loop
         return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.FORM_FORGOT))
+
+    def verifyFieldPassword(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.FIELD_PASSWORD))
+
+    def verifyLinkOrange(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.LINK_ORANGE))
+
+    def verifyPageOrange(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.PAGE_ORANGE))
+
+    def verifyEmptySpace(self):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.LOGIN_BUTTON))
+
+    def getInputText(self, locator):
+        loop = self.context.async_context.loop
+        return loop.run_until_complete(self.context.page.locator(locator).input_value())
+
+

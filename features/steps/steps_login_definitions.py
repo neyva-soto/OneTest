@@ -2,6 +2,7 @@ from assertpy import assert_that
 from behave import given, when, then
 
 from src.pages.login.login_page import LoginPage
+from src.pages.login.login_page_locators import LoginPageLocators
 
 
 @given(u'The user is on the login page')
@@ -42,37 +43,66 @@ def step_the_user_should_see_the_field(context, id_selector):
     input_field = login_page.verify_input_field(id_selector)
     assert_that(input_field).is_not_none()
 
-@then(u'Then it will be shown that the {} field is required')
+@then(u'Then it will be shown that the {input} field is required')
 def thenItWillBeShownThatTheFieldIsRequired(context, input):
     login_page = LoginPage(context)
     if(input == "username"):
-        assert_that(login_page.verifyUserInputRequired())
+        assert_that(login_page.verifyUserInputRequired()).exists()
     else:
-        assert_that(login_page.verifyPasswordInputRequired())
+        assert_that(login_page.verifyPasswordInputRequired()).exists()
 
 @then (u'button will be displayed')
 def buttonWillBeDispleyed(contex):
     login_page = LoginPage(contex)
-    assert assert_that(login_page.verifydisplayButton())
+    assert assert_that(login_page.verifydisplayButton()).exists()
 
 @then(u'User and password fields should be displayed are required')
 def userAndPasswordFieldWillBeDispayedAreRequired(context):
     login_page = LoginPage(context)
-    assert_that(login_page.verifyUserInputRequired())
-    assert_that(login_page.verifyPasswordInputRequired())
+    assert_that(login_page.verifyUserInputRequired()).exists()
+    assert_that(login_page.verifyPasswordInputRequired()).exists()
 
 @then (u'will display a message')
 def willDisplayAMessage(context):
     login_page = LoginPage(context)
     assert_that(login_page.verifydisplaywarnin()).exists()
 
-@When(u'the user clicks in forgotPassword')
+@when(u'the user clicks in forgotPassword')
 def the_user_clicks_in_forgotPassword(context):
     login_page = LoginPage(context)
     assert_that(login_page.verifyForgotPassword())
 
-#the new password form will show up
-@Then(u'the new password form will show up')
+@then(u'the new password form will show up')
 def the_new_password_form_will_show_up(context):
     login_page = LoginPage(context)
-    assert assert_that(login_page.verifyFormForgotPassword())
+    assert assert_that(login_page.verifyFormForgotPassword()).exists()
+
+@when(u'the user clicks in linkOrange')
+def the_user_clicks_in_linkOrange(context):
+    login_page = LoginPage(context)
+    assert assert_that(login_page.verifyLinkOrange())
+
+@then(u'the password field must be hidden')
+def thePasswordFieldMustBeHidden(context):
+    login_page = LoginPage(context)
+    assert assert_that(login_page.verifyFieldPassword())
+
+@then(u'the will see new page linkOrange')
+def the_will_see_new_page_linkOrange(context):
+    login_page = LoginPage(context)
+    assert assert_that(login_page.verifyPageOrange()).exists()
+
+@then(u'will display the page empty spaces')
+def will_display_the_page_empty_spaces(context):
+    login_page = LoginPage(context)
+    assert assert_that(login_page.verifyEmptySpace()).exists()
+
+@then(u'will display text-input for username empty')
+def will_display_text_input_for_username_empty(context):
+    login_page = LoginPage(context)
+    assert assert_that(login_page.getInputText(LoginPageLocators.USERNAME_INPUT)).is_equal_to("")
+@then(u'will display text-input for password empty')
+def will_display_text_input_for_password_empty(context):
+    login_page = LoginPage(context)
+    assert assert_that(login_page.getInputText(LoginPageLocators.PASSWORD_INPUT)).is_equal_to("")
+
