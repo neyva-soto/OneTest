@@ -47,25 +47,25 @@ def step_the_user_should_see_the_field(context, id_selector):
 def thenItWillBeShownThatTheFieldIsRequired(context, input):
     login_page = LoginPage(context)
     if(input == "username"):
-        assert_that(login_page.verifyUserInputRequired()).exists()
+        assert_that(login_page.verifyUserInputRequired()).is_not_none()
     else:
-        assert_that(login_page.verifyPasswordInputRequired()).exists()
+        assert_that(login_page.verifyPasswordInputRequired()).is_not_none()
 
 @then (u'button will be displayed')
 def buttonWillBeDispleyed(contex):
     login_page = LoginPage(contex)
-    assert assert_that(login_page.verifydisplayButton()).exists()
+    assert assert_that(login_page.verifydisplayButton()).is_not_none()
 
 @then(u'User and password fields should be displayed are required')
 def userAndPasswordFieldWillBeDispayedAreRequired(context):
     login_page = LoginPage(context)
-    assert_that(login_page.verifyUserInputRequired()).exists()
-    assert_that(login_page.verifyPasswordInputRequired()).exists()
+    assert_that(login_page.verifyUserInputRequired()).is_not_none()
+    assert_that(login_page.verifyPasswordInputRequired()).is_not_none()
 
 @then (u'will display a message')
 def willDisplayAMessage(context):
     login_page = LoginPage(context)
-    assert_that(login_page.verifydisplaywarnin()).exists()
+    assert_that(login_page.verifydisplaywarnin()).is_not_none()
 
 @when(u'the user clicks in forgotPassword')
 def the_user_clicks_in_forgotPassword(context):
@@ -75,12 +75,12 @@ def the_user_clicks_in_forgotPassword(context):
 @then(u'the new password form will show up')
 def the_new_password_form_will_show_up(context):
     login_page = LoginPage(context)
-    assert assert_that(login_page.verifyFormForgotPassword()).exists()
+    assert assert_that(login_page.verifyFormForgotPassword()).is_not_none()
 
 @when(u'the user clicks in linkOrange')
 def the_user_clicks_in_linkOrange(context):
     login_page = LoginPage(context)
-    assert assert_that(login_page.verifyLinkOrange())
+    login_page.click_link_orange()
 
 @then(u'the password field must be hidden')
 def thePasswordFieldMustBeHidden(context):
@@ -90,12 +90,12 @@ def thePasswordFieldMustBeHidden(context):
 @then(u'the will see new page linkOrange')
 def the_will_see_new_page_linkOrange(context):
     login_page = LoginPage(context)
-    assert assert_that(login_page.verifyPageOrange()).exists()
+    assert assert_that(login_page.verifyPageOrange()).is_not_none()
 
 @then(u'will display the page empty spaces')
 def will_display_the_page_empty_spaces(context):
     login_page = LoginPage(context)
-    assert assert_that(login_page.verifyEmptySpace()).exists()
+    assert assert_that(login_page.verifyEmptySpace()).is_not_none()
 
 @then(u'will display text-input for username empty')
 def will_display_text_input_for_username_empty(context):

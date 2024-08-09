@@ -11,5 +11,5 @@ class LoginPageLocators:
     FORGOT_PASSWORD = ".oxd-text oxd-text--p orangehrm-login-forgot-header"
     FORM_FORGOT = ".oxd-text oxd-text--h6 orangehrm-forgot-password-title"
     FIELD_PASSWORD = "//input[@type='password']"
-    LINK_ORANGE = "//a[@href='http://www.orangehrm.com']"
-    PAGE_ORANGE = "//h1[text()='Peace of mind is just a few clicks away!']"
+    LINK_ORANGE = "a[href='http://www.orangehrm.com']"
+    PAGE_ORANGE = ".homepage-slider-content"

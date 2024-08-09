@@ -42,7 +42,7 @@ Feature: Login - Successfully login
     When the user enters the value "<User>" in the text-input for username
     And the user enters the value "<Password>" in the text-input for password
     And the user clicks login button
-    Then will display a message <mensaje>
+    Then will display a message
 
     Examples:
       | User  | Password | mensaje   |

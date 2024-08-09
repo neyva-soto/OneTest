@@ -67,9 +67,12 @@ class LoginPage(BasePage):
         loop = self.context.async_context.loop
         return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.FIELD_PASSWORD))
 
-    def verifyLinkOrange(self):
+    def click_link_orange(self):
         loop = self.context.async_context.loop
-        return loop.run_until_complete(self.context.page.query_selector(LoginPageLocators.LINK_ORANGE))
+        link_orange = self.find_element(LoginPageLocators.LINK_ORANGE)
+        print(link_orange)
+        loop.run_until_complete(link_orange.click())
+        return link_orange
 
     def verifyPageOrange(self):
         loop = self.context.async_context.loop
